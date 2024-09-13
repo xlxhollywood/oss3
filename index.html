@@ -4,10 +4,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+<!-- Bootstrap JavaScript Bundle -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Bootstrap Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css">
+  
 
 <style>
 
@@ -167,12 +172,13 @@ td:first-child {
     }
 
     .filter-btn {
+      
       border: 1px solid #d1d1d1;
       border-radius: 50px; /* 둥근 모서리 */
       padding: 7px 15px;
       background-color: white;
       color: #6c757d;
-      font-size: 0.9rem;
+      font-size: 1rem;
       display: flex;
       align-items: center;
       gap: 5px;
@@ -250,13 +256,46 @@ td:first-child {
   
   max-height: 50px; /* 최대 높이를 제한 */
 }
-  /* 로고와 텍스트의 너비 조정 */
-  
 
-  /* 각 nav-item에 여백 추가 */
+.filter-btn{
+  font-size: 0.2em;
+  width: 6rem;
+  height: 30px;
+  font-size: 0.8rem;
+  padding-top: 0px;
+  padding-bottom: 0px;
   
+}
 
-  /* 헤더의 로고 및 텍스트 중앙 정렬 */
+#no-hover{
+  width: 8rem;
+  background-color: inherit; /* 배경색이 변경되지 않도록 */
+  cursor: default; /* 기본 커서로 유지 */
+}
+
+
+
+
+.filter-container {
+  display: flex;
+  justify-content: flex-start; /* 왼쪽 정렬 */
+  align-items: center;
+  gap: 8px; /* 버튼 사이 간격 */
+  padding: 20px;
+  flex-wrap: nowrap; /* 줄바꿈 방지 */
+  overflow-x: auto;  /* 버튼이 화면 크기를 넘을 경우 스크롤 가능하도록 설정 */
+}
+
+.filter-btn {
+  border: 1px solid #d1d1d1;
+  border-radius: 50px; /* 둥근 모서리 */
+  background-color: white;
+  color: #6c757d;
+  font-size: 1rem;
+  gap: 0px;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 가벼운 그림자 */
+  white-space: nowrap; }
   
 }
 
@@ -272,6 +311,87 @@ td:first-child {
   border-radius: 10px; /* 이미지에도 둥근 모서리 적용 */
 }
 
+#fill_btn {
+  
+  text-align: center;
+  font-size: 18px;
+  margin-right: 60px;
+  margin-left: auto; /* 아이콘을 오른쪽으로 밀어냄 */
+}
+
+#filter-container {
+  height: 1em;
+
+}
+
+#no-hover{
+  margin-right: 5px;
+margin-left: auto; 
+}
+
+#no-hover:hover {
+  background-color: inherit; /* 배경색이 변경되지 않도록 */
+  cursor: default; /* 기본 커서로 유지 */
+}
+
+
+
+#textform {
+  width: 12em;
+  border: 1px solid transparent; /* 기본 테두리 투명하게 설정 */
+  outline: none; /* 포커스 시 기본 아웃라인 제거 */
+  background-color: inherit; /* 배경색도 상속된 값 유지 */
+}
+
+/* 호버 시 스타일 제거 */
+#textform:hover {
+  border: 1px solid transparent; /* 호버 시에도 테두리 유지 */
+  background-color: inherit; /* 배경색 변화 없게 */
+}
+
+/* 포커스 시 스타일 제거 */
+#textform:focus {
+  border: 1px solid transparent; /* 포커스 시에도 테두리 변화 없게 */
+  outline: none; /* 포커스 시 나타나는 기본 아웃라인 제거 */
+  background-color: inherit; /* 배경색 변화 없게 */
+}
+
+/* 활성화 상태 시 스타일 제거 */
+#textform:active {
+  border: 1px solid transparent; /* 활성화 상태에서도 테두리 유지 */
+  background-color: inherit; /* 배경색 변화 없게 */
+}
+
+.bi-search{
+  margin-left: auto;             
+}
+
+.bi-list {
+  font-size: 2rem; /* 원하는 크기로 변경 */
+  margin-right: 5px;
+  color: rgb(159, 156, 156);
+}
+
+/* 기본 드롭다운 화살표 제거 */
+.dropdown-toggle::after {
+  display: none;
+}
+
+/* 드롭다운 버튼 테두리 제거 */
+/* 드롭다운 버튼 포커스 및 테두리 제거 */
+#dropdownMenuButton:focus, #dropdownMenuButton:active, #dropdownMenuButton:hover, #dropdownMenuButton:visited, #dropdownMenuButton:focus-visible {
+  outline: none;
+  box-shadow: none; /* 기본 그림자 제거 */
+  border: none; /* 테두리 제거 */
+}
+
+
+.dropdown{
+  margin-right: -10px;
+}
+
+
+
 
 
 
@@ -281,7 +401,27 @@ td:first-child {
   <div class="background-div"></div>
   <div class="container">
     <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
-      <img src="logo2.png" alt="Maze" style="max-width: 46px; height: auto;">
+      <!-- <img src="logo2.png" alt="Maze" style="max-width: 46px; height: auto;"> -->
+      <!-- <i class="bi bi-list"></i> -->
+       <!-- 드롭다운 토글 버튼 -->
+       <div class="dropdown">
+        <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false" data-bs-display="static">
+          <svg xmlns="http://www.w3.org/2000/svg" width="30" height="33" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"/>
+          </svg>
+        </button>
+      
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <li><a class="dropdown-item" href="#">매칭 글쓰기</a></li>
+          <li><a class="dropdown-item" href="#">리뷰 쓰기</a></li>
+          <li><a class="dropdown-item" href="#">등급</a></li>
+          <li><hr class="dropdown-divider"></li>
+          <li><a class="dropdown-item dropdown-item-danger" href="#">내 정보</a></li>
+        </ul>
+      </div>
+
+
+
       <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
         <span class="fs-4">Maze</span>
       </a>
@@ -311,7 +451,7 @@ td:first-child {
         <!-- 내용물 -->
         <div class="carousel-item active">
           <!-- 사진 침범 ㄴㄴ -->
-          <img src="screetshot1.png" class="d-block w-100" alt="First slide" style="width: 1296.01px; height: 450.38px;">
+          <img src="screenshot6.png" class="d-block w-100" alt="First slide" style="width: 1296.01px; height: 450.38px;">
           <!-- 사진 침범 ㄴㄴ -->
           <div class="container">
             <div class="carousel-caption text-start">
@@ -323,7 +463,7 @@ td:first-child {
         <!-- 내용물 -->
         <div class="carousel-item">
           <!-- 사진 침범 ㄴㄴ -->
-          <img src="screenshot2.png" class="d-block w-100" alt="First slide" style="width: 1296.01px; height: 450.38px;">
+          <img src="screenshot8.png" class="d-block w-100" alt="First slide" style="width: 1296.01px; height: 450.38px;">
           <!-- 사진 침범 ㄴㄴ -->
           <div class="container">
             <div class="carousel-caption">
@@ -335,11 +475,11 @@ td:first-child {
         <!-- 내용물 -->
         <div class="carousel-item">
           <!-- 사진 침범 ㄴㄴ -->
-          <img src="screenshot3.png" class="d-block w-100" alt="First slide" style="width: 1296.01px; height: 450.38px;">
+          <img src="screenshot7.png" class="d-block w-100" alt="First slide" style="width: 1296.01px; height: 450.38px;">
           <!-- 사진 침범 ㄴㄴ -->
           <div class="container">
             <div class="carousel-caption text-end">
-
+              
             </div>
           </div>
         </div>
@@ -406,11 +546,21 @@ td:first-child {
     
     <!-- 필터 -->
     <div class="filter-container">
-      <div class="filter-btn">모든 지역 <i class="bi bi-chevron-down"></i></div>
-      <div class="filter-btn">시간 <i class="bi bi-chevron-down"></i></div>
-      <div class="filter-btn">난이도 <i class="bi bi-chevron-down"></i></div>
-      <div class="filter-btn">신청 가능</div>
+      <div class="filter-btn any">지역 <i class="bi bi-chevron-down"></i></div>
+      <div class="filter-btn any">시간 <i class="bi bi-chevron-down"></i></div>
+      <div class="filter-btn any">난이도 <i class="bi bi-chevron-down"></i></div>
+      <div class="filter-btn any">신청 가능</div> 
+      <div class="filter-btn any" id="no-hover"><i class="bi-search"></i> <input type="text" id="textform"></div>           
     </div>
+    
+    <!-- <div class="filter-container" id="filter-container">
+      
+      <div class="filter-btn" id="fill_btn"> +
+      </div>
+    </div> -->
+    
+
+    
      <!--  -->
 
     <div class="table-responsive small" id="table">
@@ -560,9 +710,20 @@ td:first-child {
       </ul>
     </footer>
     
+        <!-- 드롭다운 토글 버튼 -->
 
-      
+
+  
+
+
   </div>
   
+
 </body>
 </html>
+<script>
+  // 드롭다운이 닫힐 때 버튼에서 포커스를 자동으로 제거
+  document.getElementById('dropdownMenuButton').addEventListener('hidden.bs.dropdown', function () {
+    this.blur(); // 포커스 해제
+  });
+</script>

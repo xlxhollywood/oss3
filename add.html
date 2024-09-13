@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<style>
+
+  .container {
+    max-width: 1150px;
+  }
+
+header {
+  padding-bottom: 30px;
+  margin-bottom: 30px;
+}
+/* 카로셀 높이 min-height */
+.carousel-item {
+  height: 25vh;  /* 기존 65vh에서 45vh로 줄임 */
+  min-height: 450px;  /* 최소 높이도 200px로 줄임 */
+  background: no-repeat center center scroll;
+  background-size: cover;
+}
+
+.carousel-caption h1 {
+  font-size: 2.5rem;  /* 제목의 크기도 높이에 맞게 조정 */
+  font-weight: 700;
+}
+
+.carousel-caption p {
+  font-size: 1.1rem;  /* 본문 텍스트 크기 조정 */
+}
+
+#carousel_container {
+  margin-top: 50px;
+  margin-bottom: 50px;
+  
+}
+
+tr {
+    height: 90px; /* 원하는 높이 설정 */
+  }
+
+  /* 테이블 셀 여백 조정 */
+  td, th {
+    font-size: 15px;
+    padding: 15px 10px;
+  }
+
+
+th {
+  text-align: center; /* 가로 가운데 정렬 */
+  vertical-align: middle; /* 세로 가운데 정렬 (헤더 높이가 클 경우 유용) */
+}
+
+
+/* 버튼과 테이블 셀의 정렬을 위한 스타일 */
+td {
+  text-align: center;        /* 가로 정렬 */
+  vertical-align: middle;    /* 세로 정렬 */
+}
+
+.btn {
+  height: 2em;
+  font-size: 1rem; 
+  white-space: nowrap;   /* 텍스트 줄바꿈 방지 */
+  overflow: hidden;      /* 텍스트가 넘치지 않게 설정 */
+  text-overflow: ellipsis; /* 텍스트가 넘칠 경우 말줄임(...) 처리 */
+  padding: 5px 10px;    /* 버튼 내부 여백 */
+  width: auto;           /* 버튼의 너비를 자동으로 설정 */
+  max-width: 100%;       /* 버튼이 부모 요소 크기를 넘지 않도록 설정 */
+  display: inline-block; /* 버튼이 내용에 맞게 크기 조정 */
+}
+
+.red {
+  background-color: rgb(255, 60, 60);
+  border-color: rgb(255, 60, 60);
+}
+
+.gray {
+
+  background-color: gray;
+  border-color: gray;
+}
+
+footer {
+  margin-left: 10px;
+  margin-right: 20px;
+}
+  
+
+td:first-child {
+    font-weight: bold; /* 첫 번째 컬럼에만 bold 적용 */
+  }
+
+  .date-selector {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      padding: 20px;
+    }
+
+    .date-selector .arrow {
+      font-size: 1.5rem;
+      color: #B0B0B0;
+      cursor: pointer;
+    }
+
+    .date-selector .date {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 40px;
+    }
+
+    .date-selector .selected {
+      background-color: #f8c146; /* 아이콘 색상 */  
+      color: white;
+      border-radius: 50px;
+      width: 60px;
+      height: 60px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .date-selector .weekend {
+      color: red;
+    }
+
+    .date-selector .saturday {
+      color: blue;
+    }
+
+    .date-selector .weekday {
+      color: black;
+    }
+
+    .date-selector .day-text {
+      font-size: 0.8rem;
+    }
+
+    .date-selector {
+      
+  display: flex;
+  justify-content: space-between; /* 요소들 사이에 균등한 간격 배치 */
+  align-items: center;
+  gap: 10px; /* 요소들 사이 간격 */
+  padding: 20px;
+  width: 100%; /* 전체 너비에 맞추기 */
+  max-width: 1200px; /* 화면 너비에 맞는 최대 값 설정 */
+  margin: 0 auto; /* 가운데 정렬 */
+}
+
+    .filter-container {
+      display: flex;
+      justify-content: flex-start; /* 왼쪽 정렬 */
+      align-items: center;
+      gap: 15px; /* 버튼 사이 간격 */
+      padding: 20px;
+    }
+
+    .filter-btn {
+      border: 1px solid #d1d1d1;
+      border-radius: 50px; /* 둥근 모서리 */
+      padding: 7px 15px;
+      background-color: white;
+      color: #6c757d;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      cursor: pointer;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 가벼운 그림자 */
+    }
+
+    .filter-btn i {
+      font-size: 0.8rem;
+      color: #f8c146; /* 아이콘 색상 */
+    }
+
+    .filter-btn:hover {
+      background-color: #f1f1f1;
+    }
+
+    .nav-link {
+      color: black;
+    }
+
+
+    #chose {
+    background-color: #f8c146 !important; /* 노란색 배경 */
+    border: #f8c146;
+    color: white !important; /* 텍스트 색상 흰색 */
+    border-radius: 7px; /* 버튼의 둥근 모서리 */
+    padding: 10px 15px; /* 버튼 내부 여백 */
+    }
+
+    /* 배경용 div 스타일 */
+.background-div {
+  position: absolute;
+  top: 75px; /* 원하는 값으로 조정하여 배경을 밑으로 내림 */
+  left: 0;
+  width: 100%;
+  height: 550px; /* 원하는 높이로 설정 */
+  background-color: #f2f5f7;
+  z-index: -1; /* 컨텐츠 뒤에 배치 */
+}
+
+/* 컨텐츠는 relative로 설정하여 배경 위에 쌓이도록 설정 */
+.container {
+  position: relative; /* absolute 요소가 이 container 안에 속하도록 */
+  z-index: 1; /* 컨텐츠를 배경보다 위에 배치 */
+}
+
+@media (max-width: 768px) {
+  
+  .background-div {
+    top: 145px; /* 더 작은 화면에서는 top을 150px로 설정 */
+  }
+  
+  .header {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* nav-pills를 수직으로 나열 */
+  .nav-pills {
+    align-items: center;
+    width: 100%; /* 네비게이션의 너비를 100%로 설정 */
+  }
+
+  /* 각 nav-item에 여백 추가 */
+  .nav-item {
+    margin-bottom: 10px; /* 항목 사이 간격 추가 */
+  }
+
+  .fs-4 {
+    padding-top: 8px;
+  }
+  /* 헤더의 로고 및 텍스트 중앙 정렬 */
+  
+  header img {
+  
+  max-height: 50px; /* 최대 높이를 제한 */
+}
+  /* 로고와 텍스트의 너비 조정 */
+  
+
+  /* 각 nav-item에 여백 추가 */
+  
+
+  /* 헤더의 로고 및 텍스트 중앙 정렬 */
+  
+}
+
+/* 카루솔 컨테이너에 높이와 둥근 모서리 적용 */
+#myCarousel {
+  border-radius: 10px; /* 카루솔 컨테이너에 둥근 모서리 적용 */
+  overflow: hidden; /* 둥근 모서리 바깥으로 넘치는 이미지 숨기기 */
+}
+
+/* 카루솔 이미지에도 둥근 모서리 적용 */
+#myCarousel .carousel-item img {
+  height: 100%; /* 카루솔 높이에 맞게 이미지 높이 조정 */ 
+  border-radius: 10px; /* 이미지에도 둥근 모서리 적용 */
+}
+
+
+
+
+</style>
+</head>
+<body>
+  
+  <div class="container">
+    <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+      <img src="logo2.png" alt="Maze" style="max-width: 46px; height: auto;">
+      <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+        <span class="fs-4">Maze</span>
+      </a>
+
+      <ul class="nav nav-pills">
+        <li class="nav-item">
+          <a href="#" class="nav-link" id="chose">소셜 매치</a>
+        </li>
+        <li class="nav-item"><a href="#" class="nav-link">빠른 예약</a></li>
+        <li class="nav-item"><a href="#" class="nav-link">테마 후기</a></li>
+        <li class="nav-item"><a href="#" class="nav-link">공지 사항</a></li>
+        <li class="nav-item"><a href="#" class="nav-link">FAQs</a></li>
+      </ul>
+    </header>
+    <!-- 배경용 div (absolute) -->
+  
+
+
+    <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4">
+      <div class="col-md-4 d-flex align-items-center">
+        <a href="/" class="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none lh-1">
+          
+        </a>
+        <span class="mb-3 mb-md-0 text-body-secondary">© Maze, Inc</span>
+      </div>
+      <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
+        <li class="ms-3"><a class="text-body-secondary" href="#"><i class="bi bi-twitter" style="font-size: 24px;"></i></a></li>
+        <li class="ms-3"><a class="text-body-secondary" href="#"><i class="bi bi-instagram" style="font-size: 24px;"></i></a></li>
+        <li class="ms-3"><a class="text-body-secondary" href="#"><i class="bi bi-facebook" style="font-size: 24px;"></i></a></li>
+      </ul>
+    </footer>
+    
+
+      
+  </div>
+  
+</body>
+</html>
