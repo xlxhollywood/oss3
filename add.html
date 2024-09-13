@@ -156,8 +156,7 @@ footer {
           <div class="form-floating mb-3" id="select-wrapper">
 
             <select id="regionSelect" class="dropdown" name="region">
-              <option value="">전국</option>
-              <option value="nationwide">전국</option>
+              <option value="">지역</option>
               <option value="seoul">서울</option>
               <option value="gangwon">강원도</option>
               <option value="gyeonggi">경기도</option>
@@ -261,7 +260,7 @@ footer {
           </div>
 
           <hr class="my-4">
-          <button class="w-100 mb-2 btn btn-lg rounded-3 btn-primary" type="submit">등록하기</button>
+          <button class="w-100 mb-2 btn btn-lg rounded-3 btn-primary" type="submit" onclick="return confirmAdd()">등록하기</button>
         </form>
 
       </div>
@@ -290,6 +289,15 @@ footer {
 </body>
 </html>
 <script>
+  
+  function confirmAdd() {
+    if (validateForm()) {
+      alert("게시물이 추가됩니다");  // 게시물이 추가된다는 알림
+      return true;  // 폼 제출 계속 진행
+    }
+    return false;  // 폼 제출 중단
+  }
+
   function validateForm() {
     // Get all the select elements
     const regionSelect = document.getElementById('regionSelect');
