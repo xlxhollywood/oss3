@@ -261,7 +261,7 @@ footer {
           </div>
 
           <hr class="my-4">
-          <button class="w-100 mb-2 btn btn-lg rounded-3 btn-primary" type="submit" onclick="return confirmUpdate()">수정하기
+          <button class="w-100 mb-2 btn btn-lg rounded-3 btn-primary" type="button" onclick="confirmUpdate()">수정하기</button>
         </form>
 
       </div>
@@ -291,9 +291,14 @@ footer {
 </html>
 <script>
 
-  function confirmUpdate() {
-    return confirm("게시물을 수정할까요?");  // 수정 여부 확인
+  
+function confirmUpdate() {
+  if (confirm("게시물을 수정할까요?")) {
+    // 수정이 확인되면 메인 페이지로 이동
+    window.location.href = 'index.html';  // 예시로 index.html 페이지로 이동
   }
+}
+
 
   function validateForm() {
     // Get all the select elements
