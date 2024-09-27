@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #yellow {
+      background-color: beige;
+      height: 500px;
+    }
+  </style>
+</head>
+<body>
+  
+  <button id="get-student-btn">학생 데이터 가져오기</button>
+  <br>
+  <input type="text" id="name" placeholder="name">
+  <input type="text" id="age" placeholder="age">
+  <button id="add-student-btn">학생 데이터 추가</button>
+  
+  <div id="yellow">
+    <ul id="student-list"></ul>
+  </div>
+</body>
+</html>
+<script>
+  let editingStudentId = null; // 수정 중인 학생의 ID를 저장할 변수
+
+  window.onload = function () {
+    let btnStu = document.getElementById("get-student-btn");
+    let btnAdd = document.getElementById("add-student-btn");
+    
+    btnStu.addEventListener("click", getStudents);
+    btnAdd.addEventListener("click", () => {
+      if (editingStudentId) {
+        updateStudent(editingStudentId); // 수정 모드일 때는 수정 기능 호출
+      } else {
+        postData(); // 그렇지 않을 때는 추가 기능 호출
+      }
+    });
+  }
+
+  // 학생 데이터를 가져와 ul 안에 li 요소로 추가하는 함수
+  function getStudents() {
+    let studentList = document.getElementById("student-list");
+    const xhr = new XMLHttpRequest();
+
+    xhr.open("GET", "http://localhost:3001/students");
+    xhr.setRequestHeader("content-type", "application/json");
+
+    xhr.onload = () => {
+      if (xhr.status == 200) {
+        const res = JSON.parse(xhr.response);
+        studentList.innerHTML = ""; // 기존 리스트 초기화
+        res.forEach(student => {
+          const li = document.createElement("li");
+          li.textContent = `${student.name}, ${student.age} `;
+
+          // 수정 버튼 생성
+          const editButton = document.createElement("button");
+          editButton.textContent = "수정";
+          editButton.addEventListener("click", () => editStudent(student.id));
+          
+          // 삭제 버튼 생성
+          const deleteButton = document.createElement("button");
+          deleteButton.textContent = "삭제";
+          deleteButton.addEventListener("click", () => deleteStudent(student.id));
+          
+          // li에 버튼 추가
+          li.appendChild(editButton);
+          li.appendChild(deleteButton);
+          
+          studentList.appendChild(li);
+        });
+      } else {
+        console.log(xhr.status, xhr.statusText);
+      }
+    }
+    xhr.send();
+  }
+
+  // 학생 데이터를 POST로 추가하는 함수
+  function postData() {
+    const name = document.getElementById("name").value;
+    const age = document.getElementById("age").value;
+
+    if (!name || !age) {
+      alert("이름과 나이를 입력하세요.");
+      return;
+    }
+
+    const xhr = new XMLHttpRequest();
+    xhr.open("POST", "http://localhost:3001/students");
+    xhr.setRequestHeader("content-type", "application/json");
+
+    const studentData = JSON.stringify({ name: name, age: age });
+
+    xhr.onload = () => {
+      if (xhr.status == 201) { // 201 Created 상태
+        alert("학생이 추가되었습니다.");
+        getStudents(); // 학생 데이터를 다시 불러오기
+        document.getElementById("name").value = "";
+        document.getElementById("age").value = "";
+      } else {
+        console.log(xhr.status, xhr.statusText);
+      }
+    }
+
+    xhr.send(studentData);
+  }
+
+  // 학생 삭제 함수
+  function deleteStudent(id) {
+    const xhr = new XMLHttpRequest();
+    xhr.open("DELETE", `http://localhost:3001/students/${id}`);
+    xhr.setRequestHeader("content-type", "application/json");
+
+    xhr.onload = () => {
+      if (xhr.status == 200) {
+        alert("학생이 삭제되었습니다.");
+        getStudents(); // 학생 데이터를 다시 불러오기
+      } else {
+        console.log(xhr.status, xhr.statusText);
+      }
+    }
+
+    xhr.send();
+  }
+
+  // 학생 수정 함수 (데이터 불러오기)
+  function editStudent(id) {
+    const xhr = new XMLHttpRequest();
+    xhr.open("GET", `http://localhost:3001/students/${id}`);
+    xhr.setRequestHeader("content-type", "application/json");
+
+    xhr.onload = () => {
+      if (xhr.status == 200) {
+        const student = JSON.parse(xhr.response);
+        document.getElementById("name").value = student.name;
+        document.getElementById("age").value = student.age;
+        editingStudentId = student.id; // 수정할 학생의 ID 저장
+      } else {
+        console.log(xhr.status, xhr.statusText);
+      }
+    }
+
+    xhr.send();
+  }
+
+  // 학생 데이터를 PUT으로 수정하는 함수
+  function updateStudent(id) {
+    const name = document.getElementById("name").value;
+    const age = document.getElementById("age").value;
+
+    if (!name || !age) {
+      alert("이름과 나이를 입력하세요.");
+      return;
+    }
+
+    const xhr = new XMLHttpRequest();
+    xhr.open("PUT", `http://localhost:3001/students/${id}`);
+    xhr.setRequestHeader("content-type", "application/json");
+
+    const studentData = JSON.stringify({ name: name, age: age });
+
+    xhr.onload = () => {
+      if (xhr.status == 200) {
+        alert("학생 정보가 수정되었습니다.");
+        getStudents(); // 학생 데이터를 다시 불러오기
+        document.getElementById("name").value = "";
+        document.getElementById("age").value = "";
+        editingStudentId = null; // 수정 모드 종료
+      } else {
+        console.log(xhr.status, xhr.statusText);
+      }
+    }
+
+    xhr.send(studentData);
+  }
+</script>

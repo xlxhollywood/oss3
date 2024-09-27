@@ -416,7 +416,7 @@ margin-left: auto;
       
         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
           <!-- 매칭 글쓰기 버튼 -->
-          <li><a class="dropdown-item" href="add.html">매칭 글쓰기</a></li>
+          <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#addModal">매칭 글쓰기</a></li>
           <li><a class="dropdown-item" href="#">리뷰 쓰기</a></li>
           <li><a class="dropdown-item" href="#">등급</a></li>
           <li><hr class="dropdown-divider"></li>
@@ -715,6 +715,125 @@ margin-left: auto;
     
         <!-- 드롭다운 토글 버튼 -->
 
+        <div class="modal-content rounded-4 shadow">
+          <div class="modal-header p-5 pb-4 border-bottom-0">
+            <h1 class="fw-bold mb-0 fs-2">매칭 글 작성</h1>
+          </div>
+    
+          <div class="modal-body p-5 pt-0">
+            <form id="myForm" onsubmit="return validateForm()">
+              <div class="form-floating mb-3" id="select-wrapper">
+    
+                <select id="regionSelect" class="dropdown" name="region">
+                  <option value="">지역</option>
+                  <option value="seoul">서울</option>
+                  <option value="gangwon">강원도</option>
+                  <option value="gyeonggi">경기도</option>
+                  <option value="gyeongsangnam">경상남도</option>
+                  <option value="gyeongsangbuk">경상북도</option>
+                  <option value="gwangju">광주광역시</option>
+                  <option value="daegu">대구광역시</option>
+                  <option value="daejeon">대전광역시</option>
+                  <option value="busan">부산광역시</option>
+                  <option value="sejong">세종특별자치시</option>
+                  <option value="ulsan">울산광역시</option>
+                  <option value="incheon">인천광역시</option>
+                  <option value="jeollanam">전라남도</option>
+                  <option value="jeollabuk">전라북도</option>
+                  <option value="jeju">제주특별자치도</option>
+                  <option value="chungcheongnam">충청남도</option>
+                  <option value="chungcheongbuk">충청북도</option>
+                </select>
+    
+                <select id="districtSelect" class="dropdown" name="district">
+                  <option value="">자치구</option>
+                  <option value="gangbuk">강북구</option>
+                  <option value="gangnam">강남구</option>
+                  <option value="gangdong">강동구</option>
+                  <option value="gangseo">강서구</option>
+                  <option value="gwanak">관악구</option>
+                  <option value="gwangjin">광진구</option>
+                  <option value="guro">구로구</option>
+                  <option value="geumcheon">금천구</option>
+                  <option value="nowon">노원구</option>
+                  <option value="dobong">도봉구</option>
+                  <option value="dongdaemun">동대문구</option>
+                  <option value="dongjak">동작구</option>
+                  <option value="mapo">마포구</option>
+                  <option value="seodaemun">서대문구</option>
+                  <option value="seocho">서초구</option>
+                  <option value="seongbuk">성북구</option>
+                  <option value="seongdong">성동구</option>
+                  <option value="songpa">송파구</option>
+                  <option value="yangcheon">양천구</option>
+                  <option value="yeongdeungpo">영등포구</option>
+                  <option value="yongsan">용산구</option>
+                  <option value="eunpyeong">은평구</option>
+                  <option value="jongno">종로구</option>
+                  <option value="jung">중구</option>
+                  <option value="jungnang">중랑구</option>
+                </select>
+    
+                <select id="branchSelect" class="dropdown" name="branch">
+                  <option value="">지점명</option>
+                  <option value="room_escape">룸 익스케이프</option>
+                  <option value="beat_phobia">비트 포비아</option>
+                  <option value="earth_escape">지구별 방탈출</option>
+                </select> 
+    
+                <select id="themeSelect" class="dropdown" name="theme">
+                  <option value="">테마명</option>
+                  <option value="murder_case">대호시장 살인사건</option>
+                  <option value="draw_heart">마음을 그려드립니다</option>
+                  <option value="bathhouse">강남 목욕탕</option>
+                  <option value="last_core">라스트 코어</option>
+                  <option value="amon">아몬 : 새벽을 여는 소년</option>
+                  <option value="quest">퀘스트 : 여정의 시작</option>
+                  <option value="cat_fortune">냥이점집</option>
+                  <option value="penny_pinchers">어느 구두쇠의 전시회장</option>
+                  <option value="treasure_ship">트레져쉽 : 신화 속의 존재</option>
+                </select> 
+    
+                <select id="timeSelect" class="dropdown" name="time">
+                  <option value="">시간</option>
+                  <option value="08:00">08:00</option>
+                  <option value="09:00">09:00</option>
+                  <option value="10:00">10:00</option>
+                  <option value="11:00">11:00</option>
+                  <option value="12:00">12:00</option>
+                  <option value="13:00">13:00</option>
+                  <option value="14:00">14:00</option>
+                  <option value="15:00">15:00</option>
+                  <option value="16:00">16:00</option>
+                  <option value="17:00">17:00</option>
+                  <option value="18:00">18:00</option>
+                  <option value="19:00">19:00</option>
+                  <option value="20:00">20:00</option>
+                  <option value="21:00">21:00</option>
+                  <option value="22:00">22:00</option>
+                  <option value="23:00">23:00</option>
+                  <option value="24:00">24:00</option>
+                </select> 
+    
+                <select id="peopleSelect" class="dropdown" name="people">
+                  <option value="">인원</option>
+                  <option value="1">1 명</option>
+                  <option value="2">2 명</option>
+                  <option value="3">3 명</option>
+                  <option value="4">4 명</option>
+                </select>
+              </div>
+    
+              <div class="form-floating mb-3" id="form-text">
+                <textarea class="form-control rounded-3" id="contentTextarea" placeholder="Content"></textarea>
+              </div>
+    
+              <hr class="my-4">
+              <button class="w-100 mb-2 btn btn-lg rounded-3 btn-primary" type="submit" onclick="return confirmAdd()">등록하기</button>
+            </form>
+    
+          </div>
+        </div>
 
   
 
@@ -725,6 +844,7 @@ margin-left: auto;
 </body>
 </html>
 <script>
+
   document.addEventListener("DOMContentLoaded", function () {
     const clickableCells = document.querySelectorAll("tr.clickable");
 
@@ -734,4 +854,67 @@ margin-left: auto;
       });
     });
   });
+
+  function confirmAdd() {
+    if (validateForm()) {
+      alert("게시물이 추가됩니다");
+      return true;
+    }
+    return false;
+  }
+
+  function validateForm() {
+    const regionSelect = document.getElementById('regionSelect');
+    const districtSelect = document.getElementById('districtSelect');
+    const branchSelect = document.getElementById('branchSelect');
+    const themeSelect = document.getElementById('themeSelect');
+    const timeSelect = document.getElementById('timeSelect');
+    const peopleSelect = document.getElementById('peopleSelect');
+    const textarea = document.getElementById("contentTextarea");
+
+    if (textarea.value.trim() === "") {
+        alert("내용을 입력해주세요.");
+        textarea.focus(); 
+        return false;
+    }
+
+    if (regionSelect.value === "") {
+      alert('지역을 선택해 주세요.');
+      regionSelect.focus();
+      return false;
+    }
+
+    if (districtSelect.value === "") {
+      alert('자치구를 선택해 주세요.');
+      districtSelect.focus();
+      return false;
+    }
+
+    if (branchSelect.value === "") {
+      alert('지점명을 선택해 주세요.');
+      branchSelect.focus();
+      return false;
+    }
+
+    if (themeSelect.value === "") {
+      alert('테마명을 선택해 주세요.');
+      themeSelect.focus();
+      return false;
+    }
+
+    if (timeSelect.value === "") {
+      alert('시간을 선택해 주세요.');
+      timeSelect.focus();
+      return false;
+    }
+
+    if (peopleSelect.value === "") {
+      alert('인원을 선택해 주세요.');
+      peopleSelect.focus();
+      return false;
+    }
+
+    return true;
+  }   
+
 </script>
